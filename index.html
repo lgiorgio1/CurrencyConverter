@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="converter">
+    <div class="converter-card">
+      <header class="converter-header">
+        <h1>Conversor de Moeda</h1>
+        <p>Confira valores de conversão atualizados</p>
+      </header>
+
+      <form class="converter-form" id="converter-form" novalidate>
+        <div class="field">
+          <label for="amount">Valor</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            placeholder="1,000.00"
+            min="0"
+            step="any"
+            value="1000"
+            required
+          />
+        </div>
+
+        <div class="currency-row">
+          <div class="currency-field">
+            <label for="from-currency">De</label>
+            <div class="select-wrapper">
+              <img
+                id="from-flag"
+                src="https://flagsapi.com/US/flat/64.png"
+                alt=""
+                class="flag"
+              />
+              <select id="from-currency" name="from-currency">
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="BRL">BRL</option>
+                <option value="CAD">CAD</option>
+                <option value="AUD">AUD</option>
+                <option value="CHF">CHF</option>
+                <option value="CNY">CNY</option>
+                <option value="INR">INR</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" class="swap-btn" id="swap-btn" aria-label="Swap currencies">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 10h14l-4-4" />
+              <path d="M17 14H3l4 4" />
+            </svg>
+          </button>
+
+          <div class="currency-field">
+            <label for="to-currency">Para</label>
+            <div class="select-wrapper">
+              <img
+                id="to-flag"
+                src="https://flagsapi.com/EU/flat/64.png"
+                alt=""
+                class="flag"
+              />
+              <select id="to-currency" name="to-currency">
+                <option value="USD">USD</option>
+                <option value="EUR" selected>EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="BRL">BRL</option>
+                <option value="CAD">CAD</option>
+                <option value="AUD">AUD</option>
+                <option value="CHF">CHF</option>
+                <option value="CNY">CNY</option>
+                <option value="INR">INR</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="convert-btn" id="convert-btn">
+          <span class="btn-text">Converter</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div class="result" id="result" aria-live="polite">
+        <div class="result-amount" id="result-amount">—</div>
+        <div class="result-rate" id="result-rate">Entrar valor para conversão</div>
+      </div>
+
+      
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
