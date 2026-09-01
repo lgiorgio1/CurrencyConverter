@@ -55,13 +55,30 @@ function convert() {
   setLoading(true);
   resultRate.textContent = "Converting…";
 
-  // INSERIR API
-  setTimeout(() => {
-    const converted = amount; // placeholder value
+  
+  const apiKey = "45d7d4f6ddb6e330d60cbc46"
+
+  const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${from}`;
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    const rate = data.conversion_rates[to];
+    const converted = amount * rate;
+
     resultAmount.textContent = formatCurrency(converted, to);
-    resultRate.textContent = `1 ${from} = 1.0000 ${to}`;
+    resultRate.textContent = `1 ${from} = ${rate.toFixed(4)} ${to}`;
+
+  })
+  .catch(error => {
+    console.error("Error fetching exchange rate:", error);
+    resultRate.textContent = "Erro ao converter.";
+  })
+  .finally(() => {
     setLoading(false);
-  }, 400);
+  });
+
+  
 }
 
 fromSelect.addEventListener("change", () => updateFlag(fromSelect, fromFlag));
