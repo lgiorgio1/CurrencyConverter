@@ -24,8 +24,8 @@ const countryMap = {
 
 function updateFlag(select, flagImg) {
   const code = select.value;
-  const country = code.slice(0, 2).toUpperCase();
-  flagImg.src = `https://flagsapi.com/${country}/flat/64.png`;
+  const country = code.slice(0, 2).toLowerCase();
+  flagImg.src = `https://flagcdn.com/w40/${country}.png`;
   flagImg.alt = `${code} flag`;
 }
 
